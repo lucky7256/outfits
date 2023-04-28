@@ -7,87 +7,186 @@
     
     <title>Outfits</title>
      <link rel="stylesheet" href="css/nav.css">
+     <link rel="stylesheet" href="css/media.css">
+     <link rel="stylesheet" href="css/slider.css">
+     <link rel="stylesheet" href="css/fotter.css">
+     
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <script src="/js/slider.js" defer></script>
+  <link rel = "icon" href ="Image/logo.png" type = "image/x-icon">
 </head>
 <body>
     <div class="wrapper">
+    <div class="container"> 
       <nav>
         <input type="checkbox" id="show-search">
         <input type="checkbox" id="show-menu">
         <label for="show-menu" class="menu-icon"><i class="fas fa-bars"></i></label>
         <div class="content">
-            <img src="Image/logo.png" style="height:50px;border-radius: 50%;"/>
+            <img src="Image/logo.png" style="height:50px;border-radius: 50%;" class="logo_image"/>
         <div class="logo"><a href="#">utfits</a></div>
           <ul class="links">
-            <li><a href="#">Home</a></li>
+            <li><a href="index.html">Home</a></li>
             <li>
               <a href="#" class="desktop-link">Category</a>
               <input type="checkbox" id="show-features">
               <label for="show-features">Category</label>
               <ul>
-                <li><a href="#">Trade Wear</a></li>
-                <li><a href="#">Work Weare</a></li>
                 <li><a href="#">Corporate Ware</a></li>
                 <li><a href="#">Sports Ware</a></li>
-                <li><a href="#">Supporters Gear</a></li>
                 <li><a href="#">School Uniforms</a></li>
               </ul>
             </li>
           </ul>
         </div>
-        <div> <a href="#cart"><img src="Image/cart.png"/> </a></div>
+        <div> <a href="#cart"><img src="Image/cart.png" class="cart_image" /> </a></div>
       </nav>
+      </div>
     </div>
+
+    
+    <section class="promotions">
+        <div class="container"> 
+        <h1>Welcome to Outfits</h1>
+        <h2>where you can find everything you need to refresh your wardrobe and stay on top of the latest fashion trends! Our website offers a wide range of clothing, including dresses, tops, pants, and more, from the hottest brands and designers. With our user-friendly interface and convenient search filters, you can easily find the perfect outfit for any occasion.</h2>
+        </div>
+    </section>
+    
+    <section class="product" > 
+      <div class="container">
+      <h2 class="product-category">Products <button type="button" onclick="window.location.href = '/products.html';">see all</button></h2>
+      <button class="pre-btn"><img src="image/arrow.png" alt=""></button>
+      <button class="nxt-btn"><img src="image/arrow.png" alt=""></button>
+      <div class="product-container" id="json-data">
+      </div>
+    </div>
+    <script>
+      // Fetch the JSON data from the given URL
+      fetch('/Data/product.json')
+        .then(response => response.json())
+        .then(data => {
+          // Parse the JSON data and create HTML elements
+          let jsonData = '';
+          data.forEach(item => {
+            jsonData += `
+            <div class="product-card">
+              <div class="product-image">
+                  <img src="${item.image1}" class="product-thumb" alt="">
+              </div>
+              <div class="product-info">
+                  <h2 class="product-brand">${item.title}</h2>
+                  <span class="price">₹${item.price}</span><span class="actual-price">₹${item.sale_price}</span>
+              </div>
+          </div>
+            `;
+          });
+
+          // Replace the placeholder in the HTML file with the created HTML elements
+          document.getElementById('json-data').innerHTML = jsonData;
+        })
+        .catch(error => console.error(error));
+    </script>
+
+  </section>
+
+  <section class="product"> 
+    <div class="container">
+    <h2 class="product-category">Brand</h2>
+    <button class="pre-btn"><img src="image/arrow.png" alt=""></button>
+    <button class="nxt-btn"><img src="image/arrow.png" alt=""></button>
+    <div class="product-container">
+        <div class="product-card">
+            <div class="product-image">
+                <img src="/Image/products/uniform.jpg" class="product-thumb" alt="">
+            </div>
+            <div class="product-info">
+                <h2 class="product-brand">Uniform</h2>
+            </div>
+        </div>
+        <div class="product-card">
+          <div class="product-image">
+              <img src="/image/products/office.jpg" class="product-thumb" alt="">
+          </div>
+          <div class="product-info">
+              <h2 class="product-brand">Office</h2>
+          </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">
+            <img src="/image/products/sports.jpg" class="product-thumb" alt="">
+        </div>
+        <div class="product-info">
+            <h2 class="product-brand">Sports</h2>
+        </div>
+    </div>
+    <div class="product-card">
+      <div class="product-image">
+          <img src="/image/products/jackets.jpg" class="product-thumb" alt="">
+      </div>
+      <div class="product-info">
+          <h2 class="product-brand">jackets</h2>
+      </div>
+  </div>
+  <div class="product-card">
+    <div class="product-image">
+        <img src="/image/products/mirrage.jpg" class="product-thumb" alt="">
+    </div>
+    <div class="product-info">
+        <h2 class="product-brand">Mirrage</h2>
+    </div>
+</div>
+    </div>
+  </div>
+</section>
   
-    <div class="dummy-text">
-      <h2>Responsive Dropdown Menu Bar with Searchbox</h2>
-      <h2>using only HTML & CSS - Flexbox</h2>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="footer-col">
+        <h4>company</h4>
+        <ul>
+          <li><a href="#">about us</a></li>
+          <li><a href="#">our services</a></li>
+          <li><a href="#">privacy policy</a></li>
+          <li><a href="#">affiliate program</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>get help</h4>
+        <ul>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">shipping</a></li>
+          <li><a href="#">returns</a></li>
+          <li><a href="#">order status</a></li>
+          <li><a href="#">payment options</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>online shop</h4>
+        <ul>
+          <li><a href="#">watch</a></li>
+          <li><a href="#">bag</a></li>
+          <li><a href="#">shoes</a></li>
+          <li><a href="#">dress</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>follow us</h4>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
     </div>
-   
-    <div class="dummy-text">
-        <h2>Responsive Dropdown Menu Bar with Searchbox</h2>
-        <h2>using only HTML & CSS - Flexbox</h2>
-      </div>
-       
-    <div class="dummy-text">
-        <h2>Responsive Dropdown Menu Bar with Searchbox</h2>
-        <h2>using only HTML & CSS - Flexbox</h2>
-      </div>
-       
-    <div class="dummy-text">
-        <h2>Responsive Dropdown Menu Bar with Searchbox</h2>
-        <h2>using only HTML & CSS - Flexbox</h2>
-      </div>
-       
-    <div class="dummy-text">
-        <h2>Responsive Dropdown Menu Bar with Searchbox</h2>
-        <h2>using only HTML & CSS - Flexbox</h2>
-      </div>
-       
-    <div class="dummy-text">
-        <h2>Responsive Dropdown Menu Bar with Searchbox</h2>
-        <h2>using only HTML & CSS - Flexbox</h2>
-      </div>
-       
-    <div class="dummy-text">
-        <h2>Responsive Dropdown Menu Bar with Searchbox</h2>
-        <h2>using only HTML & CSS - Flexbox</h2>
-      </div>
-       
-    <div class="dummy-text">
-        <h2>Responsive Dropdown Menu Bar with Searchbox</h2>
-        <h2>using only HTML & CSS - Flexbox</h2>
-      </div>
-       
-    <div class="dummy-text">
-        <h2>Responsive Dropdown Menu Bar with Searchbox</h2>
-        <h2>using only HTML & CSS - Flexbox</h2>
-      </div>
-       
-    <div class="dummy-text">
-        <h2>Responsive Dropdown Menu Bar with Searchbox</h2>
-        <h2>using only HTML & CSS - Flexbox</h2>
-      </div>
+  </div>
+</footer>
+
+ 
   </body>
   
 </html>

@@ -1,0 +1,234 @@
+@media screen and (min-width: 1251px){
+    .container
+    {
+        width: 1240px;
+        margin:0% auto;
+    }
+    .promotions{
+        height: 100%;
+        background-image: url('../Image/background_image.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        padding-top: 20% ;
+        background-position-y: 60px;
+        background-position-x: 0% ;
+    }
+    .promotions h1{
+        font-family: "Roboto", sans-serif;
+        font-size: 5.5em;
+        text-align: left;
+        color: aliceblue;
+    }
+    .promotions h2{
+        font-family: "Roboto", sans-serif;
+        font-size: 2em;
+        text-align: left;
+        color: aliceblue;
+        width: 60%;
+        padding:5% 0%;
+    }
+    .flex-item-right, .flex-item-left {
+      flex: 100%;
+    }
+    
+}
+@media screen and (max-width: 1250px){
+    .wrapper nav{
+      max-width: 100%;
+      padding: 0 20px;
+    }
+    nav .content .links{
+      margin-left: 30px;
+    }
+    .content .links li a{
+      padding: 8px 13px;
+    }
+    .container
+    {
+        width: 95%;
+        margin:0% auto;
+    }
+    .promotions{
+        height: 100%;
+        background-image: url('../Image/background_image.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        padding-top: 20% ;
+        background-position-y: 60px ;
+        background-position-x: 10% ;
+    }
+    .promotions h1{
+        font-family: "Roboto", sans-serif;
+        font-size: 5em;
+        text-align: left;
+        color: aliceblue;
+    }
+    .promotions h2{
+        font-family: "Roboto", sans-serif;
+        font-size: 2em;
+        text-align: left;
+        color: aliceblue;
+        width: 70%;
+        padding:5% 0%;
+    }
+    .flex-item-right, .flex-item-left {
+      flex: 100%;
+    }
+  }
+  
+  @media screen and (max-width: 900px){
+    .wrapper .menu-icon{
+      display: block;
+    }
+    .wrapper #show-menu:checked ~ .menu-icon i::before{
+      content: "\f00d";
+    }
+    nav .content .links{
+      display: block;
+      position: fixed;
+      background: #14181f;
+      height: 100%;
+      width: 100%;
+      top: 70px;
+      left: -100%;
+      margin-left: 0;
+      max-width: 350px;
+      overflow-y: auto;
+      padding-bottom: 100px;
+      transition: all 0.3s ease;
+    }
+    nav #show-menu:checked ~ .content .links{
+      left: 0%;
+    }
+    .content .links li{
+      margin: 15px 20px;
+    }
+    .content .links li a,
+    .content .links li label{
+      line-height: 40px;
+      font-size: 20px;
+      display: block;
+      padding: 8px 18px;
+      cursor: pointer;
+    }
+    .content .links li a.desktop-link{
+      display: none;
+    }
+  
+    /* dropdown responsive code start */
+    .content .links ul,
+    .content .links ul ul{
+      position: static;
+      opacity: 1;
+      visibility: visible;
+      background: none;
+      max-height: 0px;
+      overflow: hidden;
+    }
+    .content .links #show-features:checked ~ ul,
+    .content .links #show-services:checked ~ ul,
+    .content .links #show-items:checked ~ ul{
+      max-height: 100vh;
+    }
+    .content .links ul li{
+      margin: 7px 20px;
+    }
+    .content .links ul li a{
+      font-size: 18px;
+      line-height: 30px;
+      border-radius: 5px!important;
+    }
+
+    .container
+    {
+        width: 80%;
+        margin:0% auto;
+    }  
+
+    .promotions{
+        height: 100%;
+        background-image: url('../Image/background_image.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        padding-top: 30% ;
+        background-position-y: 50px ;
+        background-position-x: 10% ;
+    }
+    .promotions h1{
+        font-family: "Roboto", sans-serif;
+        font-size: 3em;
+        text-align: left;
+        color: aliceblue;
+    }
+    .promotions h2{
+        font-family: "Roboto", sans-serif;
+        font-size: 1em;
+        text-align: left;
+        color: aliceblue;
+        width: 70%;
+        padding:5% 0%;
+    }
+    .flex-item-right, .flex-item-left {
+      flex: 100%;
+    }
+  }
+
+
+  @media screen and (max-width: 768px){
+    .promotions{
+        height: 100%;
+        background-image: url('../Image/background_image.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        padding-top: 30% ;
+        background-position-y: 50px ;
+        background-position-x: 50% ;
+    }
+    .promotions h1{
+        font-family: "Roboto", sans-serif;
+        font-size: 2em;
+        text-align: left;
+        color: white
+    }
+    .promotions h2{
+        font-family: "Roboto", sans-serif;
+        font-size: .8em;
+        text-align: left;
+        color: aliceblue;
+        width: 60%;
+        padding:5% 0%;
+    }
+    
+    .cart_image{
+        width: 30px;
+    }
+    
+  }
+
+
+
+@media screen and (max-width: 424px){
+    .promotions{
+        height: 100%;
+        background-image: url('../Image/background_image.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        padding-top: 30% ;
+        background-position-y: 50px ;
+        background-position-x: 60% ;
+    }
+    .promotions h1{
+        font-family: "Roboto", sans-serif;
+        font-size: 1.3em;
+        text-align: left;
+        color: white;
+    }
+    .promotions h2{
+        font-family: "Roboto", sans-serif;
+        font-size: 0.7em;
+        text-align: left;
+        color: aliceblue;
+        width: 70%;
+        padding:5% 0%;
+    }
+  }
