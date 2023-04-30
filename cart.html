@@ -13,9 +13,9 @@
      
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-  <script src="/js/slider.js" defer></script>
+  <script src="js/slider.js" defer></script>
   <link rel = "icon" href ="Image/logo.png" type = "image/x-icon">
-  <link rel="stylesheet" href="/css/button.css">
+  <link rel="stylesheet" href="css/button.css">
 
   <style>
     #customers {
@@ -67,7 +67,7 @@
                 </li>
               </ul>
             </div>
-            <div> <a href="/cart.html"><img src="Image/cart.png" class="cart_image" /> </a></div>
+            <div> <a href="cart.html"><img src="Image/cart.png" class="cart_image" /> </a></div>
           </nav>
           </div>
         </div>
@@ -111,7 +111,7 @@
               document.getElementById('thankyoubutton').innerHTML=`<div class="button-3" role="button" onclick="RemoveAllIteams()" style="margin-top:30px;"> CheckOut </div>`;
             }
             else{
-              document.getElementById('headercart').innerHTML=`<h2> No Data Added to Cart </h2> <div class="button-3" role="button" onclick="window.location.href = '/products.html';"> Back To Shopping</div>`
+              document.getElementById('headercart').innerHTML=`<h2> No Data Added to Cart </h2> <div class="button-3" role="button" onclick="window.location.href = 'products.html';"> Back To Shopping</div>`
             }
             document.getElementById('total_cost').innerHTML= "Total Cost : "+ total;
             document.getElementById('customers').innerHTML=Data;
@@ -128,12 +128,12 @@
             function RemoveAllIteams()
             {
               let ArrayData = JSON.parse(sessionStorage.getItem("DataCart"));
-              ArrayData=null;
+              ArrayData=[];
               var myArrayString = JSON.stringify(ArrayData);
               sessionStorage.setItem("DataCart", myArrayString);
-              window.location.href = '/thankyou.html';
+              window.location.href = 'thankyou.html';
             }
         </script>
 
         </section>
-</body
+      </body>

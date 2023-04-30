@@ -5,11 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Product Card/Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="css/style.css">
     
     <link rel="stylesheet" href="css/nav.css">
     <link rel="stylesheet" href="css/media.css">
     <link rel = "icon" href ="Image/logo.png" type = "image/x-icon">
+    <script src="Data/ProductData.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
   </head>
   <body>
@@ -40,7 +41,7 @@
                     </li>
                   </ul>
                 </div>
-                <div> <a href="/cart.html"><img src="Image/cart.png" class="cart_image" /> </a></div>
+                <div> <a href="cart.html"><img src="Image/cart.png" class="cart_image" /> </a></div>
               </nav>
               </div>
             </div>
@@ -94,74 +95,66 @@
         </div>
       </div>
     </div>
-    <script>
-      let title,price;
-        fetch('/Data/product.json')
-          .then(response => response.json())
-          .then(data => { console.log(data);
+    
+      <script>
             const id = new URLSearchParams(window.location.search).get('id');
-            let result = data.find(obj => obj.id == id);
-            title=result.title;
-            price=result.price;
-            console.log(result.image1);
-            document.getElementById("all_images").innerHTML = `
-            <img src = "${result.image1}" alt = "shoe image">
+              let result = ProductJsonData.find(obj => obj.id == id);
+              title=result.title;
+              price=result.price;
+              console.log(result.image1);
+              document.getElementById("all_images").innerHTML = `
+              <img src = "${result.image1}" alt = "shoe image">
+                <img src = "${result.image2}" alt = "shoe image">
+                <img src = "${result.image3}" alt = "shoe image">
+              `;
+  
+              
+              document.getElementById("image1").innerHTML = `
+              <img src = "${result.image1}" alt = "shoe image">
+              `;
+              
+              document.getElementById("image2").innerHTML = `
               <img src = "${result.image2}" alt = "shoe image">
+              `;
+              
+              document.getElementById("image3").innerHTML = `
               <img src = "${result.image3}" alt = "shoe image">
-            `;
+              `;
+  
+              document.getElementById("product-detail-description").innerHTML = result.description;
+              document.getElementById("product-detail-title").innerHTML=result.title;
+              document.getElementById("product-detail-new-price").innerHTML=result.sale_price;
+              document.getElementById("product-detail-last-price").innerHTML=result.price;
 
+
+              function addCart(){
+  
+                  if(document.getElementById("myInput").value > 0){
+                  let CartArray;
+                  if(sessionStorage.getItem("DataCart") == undefined){
+                    CartArray=[];
+                    console.log(" data in else");
+                    console.log(CartArray);
+                    
+                  }
+                  else{
+                    CartArray = JSON.parse(sessionStorage.getItem("DataCart"));
+                    console.log(" data in if");
+                    console.log(CartArray);
+                  }
+                  var cartValue = [title, price * document.getElementById("myInput").value , document.getElementById("myInput").value];
+                  CartArray.push(cartValue);
+                  var myArrayString = JSON.stringify(CartArray);
+                  sessionStorage.setItem("DataCart", myArrayString);
+                  alert(" sucessfully added to cart")
+                  console.log(JSON.parse(sessionStorage.getItem("DataCart")));
+                  }
+                };
             
-            document.getElementById("image1").innerHTML = `
-            <img src = "${result.image1}" alt = "shoe image">
-            `;
-            
-            document.getElementById("image2").innerHTML = `
-            <img src = "${result.image2}" alt = "shoe image">
-            `;
-            
-            document.getElementById("image3").innerHTML = `
-            <img src = "${result.image3}" alt = "shoe image">
-            `;
+      </script>  
 
-            document.getElementById("product-detail-description").innerHTML = result.description;
-            document.getElementById("product-detail-title").innerHTML=result.title;
-            document.getElementById("product-detail-new-price").innerHTML=result.sale_price;
-            document.getElementById("product-detail-last-price").innerHTML=result.price;
-
-        })
-          .catch(error => console.error(error));
-
-
-        function addCart(){
-
-          // console.log(document.getElementById("myInput").value);
-          // console.log(price);
-          // console.log(title);
-          if(document.getElementById("myInput").value > 0){
-          let CartArray;
-          if(sessionStorage.getItem("DataCart") == undefined){
-            CartArray=[];
-            console.log(" data in else");
-            console.log(CartArray);
-            
-          }
-          else{
-            CartArray = JSON.parse(sessionStorage.getItem("DataCart"));
-            console.log(" data in if");
-            console.log(CartArray);
-          }
-          var cartValue = [title, price * document.getElementById("myInput").value , document.getElementById("myInput").value];
-          CartArray.push(cartValue);
-          var myArrayString = JSON.stringify(CartArray);
-          sessionStorage.setItem("DataCart", myArrayString);
-          alert(" sucessfully added to cart")
-          console.log(JSON.parse(sessionStorage.getItem("DataCart")));
-          }
-        };
-        
-      </script>
 </div>
 </section>
-  <script src="/js/script.js"></script>
+  <script src="js/script.js"></script>
   </body>
 </html>

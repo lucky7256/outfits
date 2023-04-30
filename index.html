@@ -10,10 +10,12 @@
      <link rel="stylesheet" href="css/media.css">
      <link rel="stylesheet" href="css/slider.css">
      <link rel="stylesheet" href="css/fotter.css">
+
      
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-  <script src="/js/slider.js" defer></script>
+  <script src="js/slider.js" defer></script>
+  <script src="Data/ProductData.js"></script>
   <link rel = "icon" href ="Image/logo.png" type = "image/x-icon">
 </head>
 <body>
@@ -40,7 +42,7 @@
             </li>
           </ul>
         </div>
-        <div> <a href="/cart.html"><img src="Image/cart.png" class="cart_image" /> </a></div>
+        <div> <a href="cart.html"><img src="Image/cart.png" class="cart_image" /> </a></div>
       </nav>
       </div>
     </div>
@@ -55,24 +57,20 @@
     
     <section class="product" > 
       <div class="container">
-      <h2 class="product-category">Products <button type="button" onclick="window.location.href = '/products.html';">see all</button></h2>
+      <h2 class="product-category">Products <button type="button" onclick="window.location.href = 'products.html';">see all</button></h2>
       <button class="pre-btn"><img src="image/arrow.png" alt=""></button>
       <button class="nxt-btn"><img src="image/arrow.png" alt=""></button>
       <div class="product-container" id="json-data">
       </div>
     </div>
     <script>
-      // Fetch the JSON data from the given URL
-      fetch('/Data/product.json')
-        .then(response => response.json())
-        .then(data => {
-          // Parse the JSON data and create HTML elements
-          let jsonData = '';
-          data.forEach(item => {
-            jsonData += `
+      let jsonData = '';
+        ProductJsonData.forEach(item => {
+
+               jsonData += `
             <div class="product-card">
               <div class="product-image">
-                  <img src="${item.image1}" class="product-thumb" alt="" onclick="window.location.href = '/product.html?id=${item.id}';">
+                  <img src="${item.image1}" class="product-thumb" alt="" onclick="window.location.href = 'product.html?id=${item.id}';">
               </div>
               <div class="product-info">
                   <h2 class="product-brand">${item.title}</h2>
@@ -82,10 +80,9 @@
             `;
           });
 
-          // Replace the placeholder in the HTML file with the created HTML elements
-          document.getElementById('json-data').innerHTML = jsonData;
-        })
-        .catch(error => console.error(error));
+         document.getElementById('json-data').innerHTML = jsonData;
+     
+        
     </script>
 
   </section>
@@ -98,7 +95,7 @@
     <div class="product-container">
         <div class="product-card">
             <div class="product-image">
-                <img src="/Image/products/uniform.jpg" class="product-thumb" alt="">
+                <img src="Image/products/uniform.jpg" class="product-thumb" alt="">
             </div>
             <div class="product-info">
                 <h2 class="product-brand">Uniform</h2>
@@ -106,7 +103,7 @@
         </div>
         <div class="product-card">
           <div class="product-image">
-              <img src="/image/products/office.jpg" class="product-thumb" alt="">
+              <img src="image/products/office.jpg" class="product-thumb" alt="">
           </div>
           <div class="product-info">
               <h2 class="product-brand">Office</h2>
@@ -114,7 +111,7 @@
       </div>
       <div class="product-card">
         <div class="product-image">
-            <img src="/image/products/sports.jpg" class="product-thumb" alt="">
+            <img src="image/products/sports.jpg" class="product-thumb" alt="">
         </div>
         <div class="product-info">
             <h2 class="product-brand">Sports</h2>
@@ -122,7 +119,7 @@
     </div>
     <div class="product-card">
       <div class="product-image">
-          <img src="/image/products/jackets.jpg" class="product-thumb" alt="">
+          <img src="image/products/jackets.jpg" class="product-thumb" alt="">
       </div>
       <div class="product-info">
           <h2 class="product-brand">jackets</h2>
@@ -130,7 +127,7 @@
   </div>
   <div class="product-card">
     <div class="product-image">
-        <img src="/image/products/mirrage.jpg" class="product-thumb" alt="">
+        <img src="image/products/mirrage.jpg" class="product-thumb" alt="">
     </div>
     <div class="product-info">
         <h2 class="product-brand">Mirrage</h2>

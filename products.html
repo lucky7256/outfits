@@ -14,8 +14,9 @@
      
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-  <script src="/js/slider.js" defer></script>
+  <script src="js/slider.js" defer></script>
   <link rel = "icon" href ="Image/logo.png" type = "image/x-icon">
+  <script src="Data/ProductData.js"></script>
 </head>
 <body>
   <section class="main-menu">
@@ -42,7 +43,7 @@
                 </li>
               </ul>
             </div>
-            <div> <a href="/cart.html"><img src="Image/cart.png" class="cart_image" /> </a></div>
+            <div> <a href="cart.html"><img src="Image/cart.png" class="cart_image" /> </a></div>
           </nav>
           </div>
         </div>
@@ -55,28 +56,23 @@
     </ul>
   </div>
   <script>
-    // Fetch the JSON data from the given URL
-    fetch('/Data/product.json')
-      .then(response => response.json())
-      .then(data => {
-        // Parse the JSON data and create HTML elements
-        let jsonData = '';
-        data.forEach(item => {
+
+
+
+      let jsonData = '';
+        ProductJsonData.forEach(item => {
+
           jsonData += `
         <li>
         <img src="${item.image1}" alt="Product">
         <h2>${item.title}</h2>
         <span class="price">₹${item.sale_price}</span>
-        <button onclick="window.location.href = '/product.html?id=${item.id}';">View</button>
+        <button onclick="window.location.href = 'product.html?id=${item.id}';">View</button>
       </li>
           `;
-        });
-
-         
-        // Replace the placeholder in the HTML file with the created HTML elements
-        document.getElementById('json-data').innerHTML = jsonData;
-      })
-      .catch(error => console.error(error));
+          });
+          document.getElementById('json-data').innerHTML = jsonData;
+        
   </script>
 </section>
         
