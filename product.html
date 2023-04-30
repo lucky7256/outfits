@@ -40,7 +40,7 @@
                     </li>
                   </ul>
                 </div>
-                <div> <a href="#cart"><img src="Image/cart.png" class="cart_image" /> </a></div>
+                <div> <a href="/cart.html"><img src="Image/cart.png" class="cart_image" /> </a></div>
               </nav>
               </div>
             </div>
@@ -86,21 +86,23 @@
           </div>
 
           <div class = "purchase-info">
-            <input type = "number" min = "1" value = "1">
-            <button type = "button" class = "btn">
+            <input type = "number" min = "1" value = "1" id="myInput">
+            <button type = "button" class = "btn" onclick="addCart()">
               Add to Cart <i class = "fas fa-shopping-cart"></i>
             </button>
           </div>
-
-                  </div>
+        </div>
       </div>
     </div>
     <script>
+      let title,price;
         fetch('/Data/product.json')
           .then(response => response.json())
           .then(data => { console.log(data);
             const id = new URLSearchParams(window.location.search).get('id');
-            const result = data.find(obj => obj.id == id);
+            let result = data.find(obj => obj.id == id);
+            title=result.title;
+            price=result.price;
             console.log(result.image1);
             document.getElementById("all_images").innerHTML = `
             <img src = "${result.image1}" alt = "shoe image">
@@ -128,13 +130,38 @@
 
         })
           .catch(error => console.error(error));
+
+
+        function addCart(){
+
+          // console.log(document.getElementById("myInput").value);
+          // console.log(price);
+          // console.log(title);
+          if(document.getElementById("myInput").value > 0){
+          let CartArray;
+          if(sessionStorage.getItem("DataCart") == undefined){
+            CartArray=[];
+            console.log(" data in else");
+            console.log(CartArray);
+            
+          }
+          else{
+            CartArray = JSON.parse(sessionStorage.getItem("DataCart"));
+            console.log(" data in if");
+            console.log(CartArray);
+          }
+          var cartValue = [title, price * document.getElementById("myInput").value , document.getElementById("myInput").value];
+          CartArray.push(cartValue);
+          var myArrayString = JSON.stringify(CartArray);
+          sessionStorage.setItem("DataCart", myArrayString);
+          alert(" sucessfully added to cart")
+          console.log(JSON.parse(sessionStorage.getItem("DataCart")));
+          }
+        };
+        
       </script>
 </div>
 </section>
-    <script src="/js/script.js"></script>
-
-
-
-    
+  <script src="/js/script.js"></script>
   </body>
 </html>

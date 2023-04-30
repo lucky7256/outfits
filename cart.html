@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Outfits</title>
+     <link rel="stylesheet" href="css/nav.css">
+     <link rel="stylesheet" href="css/media.css">
+     <link rel="stylesheet" href="css/slider.css">
+     <link rel="stylesheet" href="css/fotter.css">
+     
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <script src="/js/slider.js" defer></script>
+  <link rel = "icon" href ="Image/logo.png" type = "image/x-icon">
+  <link rel="stylesheet" href="/css/button.css">
+
+  <style>
+    #customers {
+      font-family: Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    #customers td, #customers th {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    
+    #customers tr:nth-child(even){background-color: #f2f2f2;}
+    
+    #customers tr:hover {background-color: #ddd;}
+    
+    #customers th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #04AA6D;
+      color: white;
+    }
+    
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container"> 
+          <nav>
+            <input type="checkbox" id="show-search">
+            <input type="checkbox" id="show-menu">
+            <label for="show-menu" class="menu-icon"><i class="fas fa-bars"></i></label>
+            <div class="content">
+                <img src="Image/logo.png" style="height:50px;border-radius: 50%;" class="logo_image"/>
+            <div class="logo"><a href="#">utfits</a></div>
+              <ul class="links">
+                <li><a href="index.html">Home</a></li>
+                <li>
+                  <a href="#" class="desktop-link">Category</a>
+                  <input type="checkbox" id="show-features">
+                  <label for="show-features">Category</label>
+                  <ul>
+                    <li><a href="#">Corporate Ware</a></li>
+                    <li><a href="#">Sports Ware</a></li>
+                    <li><a href="#">School Uniforms</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <div> <a href="/cart.html"><img src="Image/cart.png" class="cart_image" /> </a></div>
+          </nav>
+          </div>
+        </div>
+
+        <section class="cart container" style="padding-top:200px">
+          <div id="headercart"></div>
+          
+
+          <table id="customers" >
+            
+          </table>
+          <div id="thankyoubutton"></div>
+          
+        <script>
+
+            CartData=JSON.parse(sessionStorage.getItem("DataCart"));
+            let Data =``;
+            let total=0;
+            console.log(CartData);
+            console.log(CartData[0]);
+            Data +=  `<tr>
+              <th>Item Name</th>
+              <th>Number Of Items</th>
+              <th>Total Cost</th>
+              <th>Remove Items</th>
+            </tr>`;
+            for(let i=0;i< CartData.length; i++)
+            {
+              total+=CartData[i][1];
+              Data += `
+              <tr>
+              <td>${CartData[i][0]}</td>
+              <td>${CartData[i][2]}</td>
+              <td>${CartData[i][1]}</td>
+              <td> <div class="button-3" role="button" onclick="removeItemCart(${i})"> Remove </div></td>
+            </tr>`;
+            }
+            if(CartData.length>0)
+            {
+              document.getElementById('headercart').innerHTML=`<h1>Data in Cart </h1> <h2 id="total_cost"> Total Cost : </h2>`;
+              document.getElementById('thankyoubutton').innerHTML=`<div class="button-3" role="button" onclick="RemoveAllIteams()" style="margin-top:30px;"> CheckOut </div>`;
+            }
+            else{
+              document.getElementById('headercart').innerHTML=`<h2> No Data Added to Cart </h2> <div class="button-3" role="button" onclick="window.location.href = '/products.html';"> Back To Shopping</div>`
+            }
+            document.getElementById('total_cost').innerHTML= "Total Cost : "+ total;
+            document.getElementById('customers').innerHTML=Data;
+            function removeItemCart(){
+              let index=arguments[0];
+              let ArrayData = JSON.parse(sessionStorage.getItem("DataCart"));
+              ArrayData.splice(index, 1);
+              var myArrayString = JSON.stringify(ArrayData);
+              sessionStorage.setItem("DataCart", myArrayString);
+              alert("sucessfully remove the item")
+              location.reload();
+
+            }
+            function RemoveAllIteams()
+            {
+              let ArrayData = JSON.parse(sessionStorage.getItem("DataCart"));
+              ArrayData=null;
+              var myArrayString = JSON.stringify(ArrayData);
+              sessionStorage.setItem("DataCart", myArrayString);
+              window.location.href = '/thankyou.html';
+            }
+        </script>
+
+        </section>
+</body
