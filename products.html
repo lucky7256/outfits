@@ -66,12 +66,13 @@
         <li>
         <img src="${item.image1}" alt="Product">
         <h2>${item.title}</h2>
-        <span class="price">₹${item.price}</span>
-        <button>View</button>
+        <span class="price">₹${item.sale_price}</span>
+        <button onclick="window.location.href = '/product.html?id=${item.id}';">View</button>
       </li>
           `;
         });
 
+         
         // Replace the placeholder in the HTML file with the created HTML elements
         document.getElementById('json-data').innerHTML = jsonData;
       })

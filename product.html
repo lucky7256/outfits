@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Product Card/Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/media.css">
+    <link rel = "icon" href ="Image/logo.png" type = "image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+  </head>
+  <body>
+
+
+
+    <section class="main-menu">
+        <div class="wrapper">
+            <div class="container"> 
+              <nav>
+                <input type="checkbox" id="show-search">
+                <input type="checkbox" id="show-menu">
+                <label for="show-menu" class="menu-icon"><i class="fas fa-bars"></i></label>
+                <div class="content">
+                    <img src="Image/logo.png" style="height:50px;border-radius: 50%;" class="logo_image"/>
+                <div class="logo"><a href="#">utfits</a></div>
+                  <ul class="links">
+                    <li><a href="index.html">Home</a></li>
+                    <li>
+                      <a href="#" class="desktop-link">Category</a>
+                      <input type="checkbox" id="show-features">
+                      <label for="show-features">Category</label>
+                      <ul>
+                        <li><a href="#">Corporate Ware</a></li>
+                        <li><a href="#">Sports Ware</a></li>
+                        <li><a href="#">School Uniforms</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+                <div> <a href="#cart"><img src="Image/cart.png" class="cart_image" /> </a></div>
+              </nav>
+              </div>
+            </div>
+          </section>
+    
+    
+    <section class="product-view">
+    <div class="container">
+    <div class = "card-wrapper">
+      <div class = "card">
+        <!-- card left -->
+        <div class = "product-imgs">
+          <div class = "img-display">
+            <div class = "img-showcase" id="all_images">
+            </div>
+          </div>
+          <div class = "img-select">
+            <div class = "img-item">
+              <a href = "#" data-id = "1" id="image1">
+              </a>
+            </div>
+            <div class = "img-item">
+              <a href = "#" data-id = "2" id="image2">
+              </a>
+            </div>
+            <div class = "img-item">
+              <a href = "#" data-id = "3" id="image3">
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- card right -->
+        <div class = "product-content">
+          <h2 class = "product-title"><div id="product-detail-title"></div></h2>
+          <div class = "product-price">
+            <p class = "last-price">Old Price: <span id="product-detail-last-price"></span></p>
+            <p class = "new-price">New Price: <span id="product-detail-new-price"></span></p>
+          </div>
+
+          <div class = "product-detail">
+            <h2>about this item: </h2>
+            <div id="product-detail-description"></div>
+          </div>
+
+          <div class = "purchase-info">
+            <input type = "number" min = "1" value = "1">
+            <button type = "button" class = "btn">
+              Add to Cart <i class = "fas fa-shopping-cart"></i>
+            </button>
+          </div>
+
+                  </div>
+      </div>
+    </div>
+    <script>
+        fetch('/Data/product.json')
+          .then(response => response.json())
+          .then(data => { console.log(data);
+            const id = new URLSearchParams(window.location.search).get('id');
+            const result = data.find(obj => obj.id == id);
+            console.log(result.image1);
+            document.getElementById("all_images").innerHTML = `
+            <img src = "${result.image1}" alt = "shoe image">
+              <img src = "${result.image2}" alt = "shoe image">
+              <img src = "${result.image3}" alt = "shoe image">
+            `;
+
+            
+            document.getElementById("image1").innerHTML = `
+            <img src = "${result.image1}" alt = "shoe image">
+            `;
+            
+            document.getElementById("image2").innerHTML = `
+            <img src = "${result.image2}" alt = "shoe image">
+            `;
+            
+            document.getElementById("image3").innerHTML = `
+            <img src = "${result.image3}" alt = "shoe image">
+            `;
+
+            document.getElementById("product-detail-description").innerHTML = result.description;
+            document.getElementById("product-detail-title").innerHTML=result.title;
+            document.getElementById("product-detail-new-price").innerHTML=result.sale_price;
+            document.getElementById("product-detail-last-price").innerHTML=result.price;
+
+        })
+          .catch(error => console.error(error));
+      </script>
+</div>
+</section>
+    <script src="/js/script.js"></script>
+
+
+
+    
+  </body>
+</html>

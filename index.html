@@ -72,7 +72,7 @@
             jsonData += `
             <div class="product-card">
               <div class="product-image">
-                  <img src="${item.image1}" class="product-thumb" alt="">
+                  <img src="${item.image1}" class="product-thumb" alt="" onclick="window.location.href = '/product.html?id=${item.id}';">
               </div>
               <div class="product-info">
                   <h2 class="product-brand">${item.title}</h2>
@@ -140,8 +140,6 @@
   </div>
 </section>
   
-
-
 <footer class="footer">
   <div class="container">
     <div class="row">
